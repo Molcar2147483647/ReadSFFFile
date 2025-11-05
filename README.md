@@ -1,4 +1,7 @@
 # ReadSffFile
+
+現在開発中...以下下書き
+
 ## 基本仕様
 MUGENキャラ制作で使用されるSAEのSffファイルを読み取り、スプライトリスト等のパラメータを取得できます  
 SFFv1のみで使用可能です　SFFv2は想定していません
@@ -24,8 +27,7 @@ C++言語標準：ISO C++17標準
 　ログファイルの生成可否も指定可能です
  
 ## 使用可能な関数一覧
-
-
+##### デフォルトコンストラクタ
 
 
 
@@ -42,8 +44,8 @@ C++言語標準：ISO C++17標準
 ReadSffFile::SFF Test("kfm.sff");  
 
 // スプライトリスト9000-1番の座標を取得  
-TestA.DataList(9000, 1).AxisX();  
-TestA.DataList(9000, 1).AxisY();  
+Test.DataList(9000, 1).AxisX();  
+Test.DataList(9000, 1).AxisY();  
 
 // 既存のデータを上書きして別のファイルを読み込む  
 Test.LoadSFF("kfm720.sff");  
