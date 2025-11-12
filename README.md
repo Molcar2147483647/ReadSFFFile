@@ -38,26 +38,32 @@ C++言語標準：ISO C++17標準
 このライブラリ関数で発生したエラーを例外として投げるかログとして記録するかを指定できます  
 
 SetThrowError(bool flag);  
-引数1 bool flag (false = ログとして記録する, true = 例外を投げる)  
+引数1 bool (false = ログとして記録する, true = 例外を投げる)  
+戻り値 なし(void)  
 
 GetThrowError(); // エラー出力切り替え設定を取得  
+戻り値 bool (false = ログとして記録する, true = 例外を投げる)
 
 ##### エラーログファイルを作成設定/取得
 このライブラリ関数で発生したエラーのログファイルを出力するかどうか指定できます  
 
 SetCreateLogFile(bool flag);  
-引数1 bool flag (false = ログファイルを出力しない, true = ログファイルを出力する)  
+引数1 bool (false = ログファイルを出力しない, true = ログファイルを出力する)  
+戻り値 なし(void)  
 
 GetCreateLogFile(); // エラーログファイルを作成設定を取得  
+戻り値 bool (false = ログファイルを出力しない, true = ログファイルを出力する)    
 
 ##### SAELibフォルダを作成設定/取得
 ファイルの出力先としてSAELibファイルを使用するかを指定できます  
 
 SetCreateSAELibFile(bool flag, const std::string& Path = "");  
-引数1 bool flag (false = SAELibファイルを使用しない, true = SAELibファイルを使用する)  
-引数2 const std::string& Path (SAELibフォルダ作成先 (省略時はパスの設定なし))  
+引数1 bool (false = SAELibファイルを使用しない, true = SAELibファイルを使用する)  
+引数2 const std::string& (SAELibフォルダ作成先 (省略時はパスの設定なし))  
+戻り値 なし(void)  
 
 GetCreateSAELibFile(); // SAELibフォルダを作成設定を取得  
+戻り値 void  
 
 ##### SAELibフォルダのパス設定/取得
 SAELibファイルの作成パスを指定できます  
