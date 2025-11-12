@@ -72,7 +72,7 @@ SetSAELibFilePath(const std::string& Path = "");
 引数1 const std::string& SAELibフォルダ作成先  
 戻り値 なし(void)  
 
-GetSAELibFilePath(); // SAELibフォルダを作成パス取得
+GetSAELibFilePath(); // SAELibフォルダを作成パス取得  
 戻り値 const std::string& SAELibフォルダ作成先  
 
 ##### SFFファイルの検索パス設定/取得
@@ -83,7 +83,7 @@ SetSFFSearchPath(const std::string& Path = ""); // SFFファイルの検索パ�
 引数1 const std::string& SFFファイルの検索先のパス  
 戻り値 なし(void)  
 
-GetSFFSearchPath(); // SFFファイルの検索パス取得
+GetSFFSearchPath(); // SFFファイルの検索パス取得  
 戻り値 const std::string& SFFファイルの検索先のパス  
 
 ## エラー情報一覧
