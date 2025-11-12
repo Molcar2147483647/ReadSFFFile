@@ -56,7 +56,7 @@ sff.ExistSpriteNumber(9000, 0); // 画像番号9000-0が存在するか確認
 引数2 int32_t イメージ番号  
 戻り値 bool(true = 成功：false = 失敗)  
 
-### 指定番号のデータへのアクセス
+#### 指定番号のデータへのアクセス
 指定番号のSFFデータへアクセスします  
 対象が存在しない場合はSFFConfig::SetThrowErrorの設定に準拠します  
 ```
@@ -67,7 +67,7 @@ sff.DataList(9000, 0).AxisX(); // 画像番号9000-0のX軸を取得
 戻り値1 対象が存在する DataList(GroupNo, ImageNo)の参照  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (true == 例外を投げる：false == ダミーデータの参照)  
 
-### 指定番号の画像をBMP出力
+#### 指定番号の画像をBMP出力
 指定番号のSFFデータをBMPファイルとして出力します  
 出力先のファイルは SFFConfig::SetSAELibPath の設定に準拠します  
 ```
@@ -77,7 +77,7 @@ sff.ExportToBMP(9000, 0); // 画像番号9000-0の画像をBMP出力
 引数2 int32_t イメージ番号  
 戻り値 bool(true = 成功：false = 失敗)  
 
-### 全ての格納画像をBMP出力
+#### 全ての格納画像をBMP出力
 読み込んだSFFデータ全てをBMPファイルとして出力します  
 出力先のファイルは SFFConfig::SetSAELibPath の設定に準拠します  
 ```
@@ -86,7 +86,8 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 引数1 bool 重複した画像を出力するか(false = 含まない：true = 含む)  
 戻り値 bool(true = 成功：false = 失敗)  
 
-### エラー出力切り替え設定/取得
+### class SAELib::SFFConfig
+#### エラー出力切り替え設定/取得
 このライブラリ関数で発生したエラーを例外として投げるかログとして記録するかを指定できます  
 ```
 SAELib::SFFConfig::SetThrowError(bool flag); // エラー出力切り替え設定
@@ -98,7 +99,7 @@ SAELib::SFFConfig::GetThrowError(); // エラー出力切り替え設定を取�
 ```
 戻り値 bool (false = ログとして記録する：true = 例外を投げる)
 
-### エラーログファイルを作成設定/取得
+#### エラーログファイルを作成設定/取得
 このライブラリ関数で発生したエラーのログファイルを出力するかどうか指定できます  
 ```
 SAELib::SFFConfig::SetCreateLogFile(bool flag); // エラーログファイルを作成設定
@@ -110,7 +111,7 @@ SAELib::SFFConfig::GetCreateLogFile(); // エラーログファイルを作成�
 ```
 戻り値 bool (false = ログファイルを出力しない：true = ログファイルを出力する)    
 
-### SAELibフォルダを作成設定/取得
+#### SAELibフォルダを作成設定/取得
 ファイルの出力先としてSAELibファイルを使用するかを指定できます  
 ```
 SAELib::SFFConfig::SetCreateSAELibFile(bool flag, const std::string& Path = ""); // SAELibフォルダを作成設定
@@ -123,7 +124,7 @@ SAELib::SFFConfig::GetCreateSAELibFile(); // SAELibフォルダを作成設定�
 ```
 戻り値 const std::string& SAELibフォルダ作成先  
 
-### SAELibフォルダのパス設定/取得
+#### SAELibフォルダのパス設定/取得
 SAELibファイルの作成パスを指定できます  
 ```
 SAELib::SFFConfig::SetSAELibFilePath(const std::string& Path = ""); // SAELibフォルダのパス設定
@@ -135,7 +136,7 @@ SAELib::SFFConfig::GetSAELibFilePath(); // SAELibフォルダを作成パス取�
 ```
 戻り値 const std::string& SAELibフォルダ作成先  
 
-### SFFファイルの検索パス設定/取得
+#### SFFファイルの検索パス設定/取得
 SFFファイルの検索先のパスを指定できます  
 SFFコンストラクタもしくはLoadSFF関数で検索先のパスを指定しない場合、この設定のパスで検索します  
 ```
