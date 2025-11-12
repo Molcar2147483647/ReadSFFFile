@@ -15,11 +15,29 @@ C++言語標準：ISO C++17標準
 
 ## 主な関数一覧
 ### デフォルトコンストラクタ
-
-### 任意ファイル読み込み
+SFFクラスのインスタンスを生成します  
+LoadSFF関数と同様の引数を指定可能です  
+引数なしで生成した場合、ファイル読み込みは行いません  
+```
+SAELib::SFF sff;
+```
+### 指定されたSFFファイルを読み込み
+実行ファイルから子階層へファイル名を検索して読み込みます  
+第二引数指定時は指定した階層からファイル名を検索します(SFFConfigよりも優先されます)  
+実行時に既存の要素は初期化、上書きされます  
+```
+sff.LoadSFF("kfm.sff");
+sff.LoadSFF("kfm.sff", "C:/MugenData");
+```
+引数1 const std::string& ファイル名(拡張子 .sff は省略可)  
+引数2 const std::string& 対象のパス(省略時は実行ファイルの子階層を探索)  
+戻り値 bool(true：成功, false：失敗)  
 
 ### 指定番号の存在確認
-
+読み込んだSFFデータを検索し、指定番号が存在するかを確認します  
+```
+sff.ExistSpriteNumber(9000, 0);
+```
 ### 指定番号へのアクセス
 
 ### 指定番号をBMP出力
@@ -39,8 +57,8 @@ C++言語標準：ISO C++17標準
 ```
 SAELib::SFFConfig::SetThrowError(bool flag); // エラー出力切り替え設定
 ```
-// 引数1 bool (false = ログとして記録する, true = 例外を投げる)  
-// 戻り値 なし(void)  
+引数1 bool (false = ログとして記録する, true = 例外を投げる)  
+戻り値 なし(void)  
 ```
 SAELib::SFFConfig::GetThrowError(); // エラー出力切り替え設定を取得
 ```
@@ -64,24 +82,24 @@ SAELib::SFFConfig::GetCreateLogFile(); // エラーログファイルを作成�
 SAELib::SFFConfig::SetCreateSAELibFile(bool flag, const std::string& Path = ""); // SAELibフォルダを作成設定
 ```
 引数1 bool (false = SAELibファイルを使用しない, true = SAELibファイルを使用する)  
-引数2 const std::string& (SAELibフォルダ作成先 (省略時はパスの設定なし))  
+引数2 const std::string& SAELibフォルダ作成先(省略時はパスの設定なし)  
 戻り値 なし(void)  
 ```
 SAELib::SFFConfig::GetCreateSAELibFile(); // SAELibフォルダを作成設定を取得  
 ```
-戻り値 const std::string& (SAELibフォルダ作成先)  
+戻り値 const std::string& SAELibフォルダ作成先  
 
 ### SAELibフォルダのパス設定/取得
 SAELibファイルの作成パスを指定できます  
 ```
 SAELib::SFFConfig::SetSAELibFilePath(const std::string& Path = ""); // SAELibフォルダのパス設定
 ```
-引数1 const std::string& (SAELibフォルダ作成先)  
+引数1 const std::string& SAELibフォルダ作成先  
 戻り値 なし(void)  
 ```
 SAELib::SFFConfig::GetSAELibFilePath(); // SAELibフォルダを作成パス取得  
 ```
-戻り値 const std::string& (SAELibフォルダ作成先)  
+戻り値 const std::string& SAELibフォルダ作成先  
 
 ### SFFファイルの検索パス設定/取得
 SFFファイルの検索先のパスを指定できます  
@@ -89,12 +107,12 @@ SFFコンストラクタもしくはLoadSFF関数で検索先のパスを指定�
 ```
 SAELib::SFFConfig::SetSFFSearchPath(const std::string& Path = ""); // SFFファイルの検索パス設定  
 ```
-引数1 const std::string& (SFFファイルの検索先のパス)  
+引数1 const std::string& SFFファイルの検索先のパス  
 戻り値 なし(void)  
 ```
 SAELib::SFFConfig::GetSFFSearchPath(); // SFFファイルの検索パス取得  
 ```
-戻り値 const std::string& (SFFファイルの検索先のパス)  
+戻り値 const std::string& SFFファイルの検索先のパス  
 
 ## エラー情報一覧
 
