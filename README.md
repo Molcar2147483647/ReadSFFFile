@@ -44,7 +44,7 @@ SetThrowError(bool flag);
 GetThrowError(); // エラー出力切り替え設定を取得  
 戻り値 bool (false = ログとして記録する, true = 例外を投げる)
 
-#### エラーログファイルを作成設定/取得
+### エラーログファイルを作成設定/取得
 このライブラリ関数で発生したエラーのログファイルを出力するかどうか指定できます  
 
 SetCreateLogFile(bool flag);  
@@ -54,7 +54,7 @@ SetCreateLogFile(bool flag);
 GetCreateLogFile(); // エラーログファイルを作成設定を取得  
 戻り値 bool (false = ログファイルを出力しない, true = ログファイルを出力する)    
 
-##### SAELibフォルダを作成設定/取得
+### SAELibフォルダを作成設定/取得
 ファイルの出力先としてSAELibファイルを使用するかを指定できます  
 
 SetCreateSAELibFile(bool flag, const std::string& Path = "");  
@@ -65,7 +65,7 @@ SetCreateSAELibFile(bool flag, const std::string& Path = "");
 GetCreateSAELibFile(); // SAELibフォルダを作成設定を取得  
 戻り値 const std::string& (SAELibフォルダ作成先)  
 
-##### SAELibフォルダのパス設定/取得
+### SAELibフォルダのパス設定/取得
 SAELibファイルの作成パスを指定できます  
 
 SetSAELibFilePath(const std::string& Path = "");  
@@ -75,7 +75,7 @@ SetSAELibFilePath(const std::string& Path = "");
 GetSAELibFilePath(); // SAELibフォルダを作成パス取得  
 戻り値 const std::string& (SAELibフォルダ作成先)  
 
-##### SFFファイルの検索パス設定/取得
+### SFFファイルの検索パス設定/取得
 SFFファイルの検索先のパスを指定できます  
 SFFコンストラクタもしくはLoadSFF関数で検索先のパスを指定しない場合、この設定のパスで検索します  
 
