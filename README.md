@@ -27,7 +27,7 @@ ReadSffFileライブラリの動作設定が可能
 throwされた例外をcatchするために使用する  
 
 ## クラス/名前空間の関数一覧
-### class SAELib::SFF
+## class SAELib::SFF
 #### デフォルトコンストラクタ
 SFFクラスのインスタンスを生成します  
 LoadSFF関数と同様の引数を指定可能です  
@@ -86,7 +86,7 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 引数1 bool 重複した画像を出力するか(false = 含まない：true = 含む)  
 戻り値 bool(true = 成功：false = 失敗)  
 
-### class SAELib::SFFConfig
+## class SAELib::SFFConfig
 #### エラー出力切り替え設定/取得
 このライブラリ関数で発生したエラーを例外として投げるかログとして記録するかを指定できます  
 ```
