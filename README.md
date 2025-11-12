@@ -34,7 +34,47 @@ C++言語標準：ISO C++17標準
 
 ##### サイズ取得
 
-##### エラー出力切り替え設定
+##### エラー出力切り替え設定/取得
+このライブラリ関数で発生したエラーを例外として投げるかログとして記録するかを指定できます  
+
+SetThrowError(bool flag);  
+// bool flag (false = ログとして記録する, true = 例外を投げる)  
+
+GetThrowError(); // エラー出力切り替え設定を取得  
+
+##### エラーログファイルを作成設定/取得
+このライブラリ関数で発生したエラーのログファイルを出力するかどうか指定できます  
+
+SetCreateLogFile(bool flag);  
+// bool flag (false = ログファイルを出力しない, true = ログファイルを出力する)  
+
+GetCreateLogFile(); // エラーログファイルを作成設定を取得  
+
+##### SAELibフォルダを作成設定/取得
+ファイルの出力先としてSAELibファイルを使用するかを指定できます  
+
+SetCreateSAELibFile(bool flag, const std::string& Path = "");  
+// bool flag (false = SAELibファイルを使用しない, true = SAELibファイルを使用する)  
+// const std::string& Path (SAELibフォルダ作成先 (省略時はパスの設定なし))  
+
+GetCreateSAELibFile(); // SAELibフォルダを作成設定を取得  
+
+##### SAELibフォルダのパス設定/取得
+SAELibファイルの作成パスを指定できます  
+
+SetSAELibFilePath(const std::string& Path = "");  
+// const std::string& Path SAELibフォルダ作成先  
+
+GetSAELibFilePath(); // SAELibフォルダを作成パス取得
+
+##### SFFファイルの検索パス設定/取得
+SFFファイルの検索先のパスを指定できます  
+SFFコンストラクタもしくはLoadSFF関数で検索先のパスを指定しない場合、この設定のパスで検索します  
+
+SetSFFSearchPath(const std::string& Path = ""); // SFFファイルの検索パス設定  
+// const std::string& Path SFFファイルの検索先のパス  
+
+GetSFFSearchPath(); // SFFファイルの検索パス取得
 
 ## エラー情報一覧
 
