@@ -59,32 +59,32 @@ GetCreateLogFile(); // エラーログファイルを作成設定を取得
 
 SetCreateSAELibFile(bool flag, const std::string& Path = "");  
 引数1 bool (false = SAELibファイルを使用しない, true = SAELibファイルを使用する)  
-引数2 const std::string& SAELibフォルダ作成先 (省略時はパスの設定なし)  
+引数2 const std::string& (SAELibフォルダ作成先 (省略時はパスの設定なし))  
 戻り値 なし(void)  
 
 GetCreateSAELibFile(); // SAELibフォルダを作成設定を取得  
-戻り値 const std::string& SAELibフォルダ作成先  
+戻り値 const std::string& (SAELibフォルダ作成先)  
 
 ##### SAELibフォルダのパス設定/取得
 SAELibファイルの作成パスを指定できます  
 
 SetSAELibFilePath(const std::string& Path = "");  
-引数1 const std::string& SAELibフォルダ作成先  
+引数1 const std::string& (SAELibフォルダ作成先)  
 戻り値 なし(void)  
 
 GetSAELibFilePath(); // SAELibフォルダを作成パス取得  
-戻り値 const std::string& SAELibフォルダ作成先  
+戻り値 const std::string& (SAELibフォルダ作成先)  
 
 ##### SFFファイルの検索パス設定/取得
 SFFファイルの検索先のパスを指定できます  
 SFFコンストラクタもしくはLoadSFF関数で検索先のパスを指定しない場合、この設定のパスで検索します  
 
 SetSFFSearchPath(const std::string& Path = ""); // SFFファイルの検索パス設定  
-引数1 const std::string& SFFファイルの検索先のパス  
+引数1 const std::string& (SFFファイルの検索先のパス)  
 戻り値 なし(void)  
 
 GetSFFSearchPath(); // SFFファイルの検索パス取得  
-戻り値 const std::string& SFFファイルの検索先のパス  
+戻り値 const std::string& (SFFファイルの検索先のパス)  
 
 ## エラー情報一覧
 
