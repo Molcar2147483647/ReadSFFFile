@@ -18,6 +18,9 @@ C++言語標準：ISO C++17標準
 読み込んだSFFファイルのデータが格納される  
 インスタンスを生成して使用する  
 
+### class SAELib::SFF::SpriteData
+格納されたデータのパラメータを取得する際に使用する  
+
 ### class SAELib::SFFConfig
 ReadSffFileライブラリの動作設定が可能  
 インスタンス生成不可  
@@ -44,7 +47,7 @@ sff.LoadSFF("kfm.sff", "C:/MugenData"); // 指定パスから検索
 ```
 引数1 const std::string& ファイル名(拡張子 .sff は省略可)  
 引数2 const std::string& 対象のパス(省略時は実行ファイルの子階層を探索)  
-戻り値 bool(true = 成功：false = 失敗)  
+戻り値 bool 読み込み結果 (false = 失敗：true = 成功)
 
 ### 指定番号の存在確認
 読み込んだSFFデータを検索し、指定番号が存在するかを確認します  
@@ -53,7 +56,7 @@ sff.ExistSpriteNumber(9000, 0); // 画像番号9000-0が存在するか確認
 ```
 引数1 int32_t グループ番号  
 引数2 int32_t イメージ番号  
-戻り値 bool(true = 成功：false = 失敗)  
+戻り値 bool 検索結果 (false = 存在なし : true = 存在あり)
 
 ### 指定番号のデータへのアクセス
 指定したグループ番号とイメージ番号のSFFデータへアクセスします  
@@ -64,7 +67,7 @@ sff.GetSpriteData(9000, 0).AxisX(); // 画像番号9000-0のX軸を取得
 引数1 int32_t グループ番号  
 引数2 int32_t イメージ番号  
 戻り値1 対象が存在する GetSpriteData(GroupNo, ImageNo)の参照  
-戻り値2 対象が存在しない SFFConfig::SetThrowError (true == 例外を投げる：false == ダミーデータの参照)  
+戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
 ### 指定インデックスのデータへアクセス
 SFFデータへ指定したインデックスでアクセスします  
@@ -74,7 +77,7 @@ sff.GetSpriteData(0).AxisX(); // 0番目データのX軸を取得
 ```
 引数1 int32_t インデックス
 戻り値1 対象が存在する GetSpriteData(Index)の参照  
-戻り値2 対象が存在しない SFFConfig::SetThrowError (true == 例外を投げる：false == ダミーデータの参照)  
+戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
 ### 指定番号の画像をBMP出力
 指定番号のSFFデータをBMPファイルとして出力します  
@@ -94,6 +97,15 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 ```
 引数1 bool 重複した画像を出力するか(false = 含まない：true = 含む)  
 戻り値 bool(true = 成功：false = 失敗)  
+
+## class SAELib::SFF::SpriteData
+### ダミーデータ判断
+自身がダミーデータであるかを確認します
+SFFConfig::SetThrowErrorの設定がOFFの場合にエラー回避のために利用されます
+```
+
+```
+戻り値 bool(false = 自身が正常なデータ：true = 自身がダミーデータ))  
 
 ## class SAELib::SFFConfig
 ### エラー出力切り替え設定/取得
