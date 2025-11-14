@@ -29,9 +29,8 @@ throwされた例外をcatchするために使用する
 ## クラス/名前空間の関数一覧
 ## class SAELib::SFF
 ### デフォルトコンストラクタ
-SFFクラスのインスタンスを生成します  
-LoadSFF関数と同様の引数を指定可能です  
-引数なしで生成した場合、ファイル読み込みは行いません  
+コンストラクタの引数を指定した場合、指定した引数でLoadSFF関数を実行します  
+引数を指定しない場合、ファイル読み込みは行いません  
 ```
 SAELib::SFF sff;
 ```
@@ -57,14 +56,24 @@ sff.ExistSpriteNumber(9000, 0); // 画像番号9000-0が存在するか確認
 戻り値 bool(true = 成功：false = 失敗)  
 
 ### 指定番号のデータへのアクセス
-指定番号のSFFデータへアクセスします  
+指定したグループ番号とイメージ番号のSFFデータへアクセスします  
 対象が存在しない場合はSFFConfig::SetThrowErrorの設定に準拠します  
 ```
-sff.DataList(9000, 0).AxisX(); // 画像番号9000-0のX軸を取得
+sff.GetSpriteData(9000, 0).AxisX(); // 画像番号9000-0のX軸を取得
 ```
 引数1 int32_t グループ番号  
 引数2 int32_t イメージ番号  
-戻り値1 対象が存在する DataList(GroupNo, ImageNo)の参照  
+戻り値1 対象が存在する GetSpriteData(GroupNo, ImageNo)の参照  
+戻り値2 対象が存在しない SFFConfig::SetThrowError (true == 例外を投げる：false == ダミーデータの参照)  
+
+### 指定インデックスのデータへアクセス
+SFFデータへ指定したインデックスでアクセスします  
+対象が存在しない場合はSFFConfig::SetThrowErrorの設定に準拠します  
+```
+sff.GetSpriteData(0).AxisX(); // 0番目データのX軸を取得
+```
+引数1 int32_t インデックス
+戻り値1 対象が存在する GetSpriteData(Index)の参照  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (true == 例外を投げる：false == ダミーデータの参照)  
 
 ### 指定番号の画像をBMP出力
