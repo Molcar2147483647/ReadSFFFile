@@ -87,7 +87,7 @@ sff.ExportToBMP(9000, 0); // 画像番号9000-0の画像をBMP出力
 ```
 引数1 int32_t グループ番号  
 引数2 int32_t イメージ番号  
-戻り値 bool(true = 成功：false = 失敗)  
+戻り値 bool 出力結果 (true = 成功：false = 失敗)  
 
 ### 全ての格納画像をBMP出力
 読み込んだSFFデータ全てをBMPファイルとして出力します  
