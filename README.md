@@ -98,6 +98,13 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 引数1 bool 重複した画像を出力するか(false = 含まない：true = 含む)  
 戻り値 bool 出力結果 (true = 成功：false = 失敗)  
 
+### SFFデータの初期化
+読み込んだSFFデータを初期化します  
+```
+sff.clear(); // SFFデータの初期化
+```
+戻り値 なし(void)  
+
 ### SFFデータの存在確認
 読み込んだSFFデータの空かを判定します  
 ```
