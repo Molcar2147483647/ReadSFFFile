@@ -98,6 +98,20 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 引数1 bool 重複した画像を出力するか(false = 含まない：true = 含む)  
 戻り値 bool 出力結果 (true = 成功：false = 失敗)  
 
+### SFFデータの存在確認
+読み込んだSFFデータの空かを判定します  
+```
+sff.empty(); // SFFデータの存在確認
+```
+戻り値 bool (false = データが空：true = データが存在)  
+
+### SFFデータのデータサイズを取得
+読み込んだSFFデータのデータサイズを返します  
+```
+sff.size(); // SFFデータサイズを取得
+```
+戻り値 size_t SFFデータサイズ  
+
 ## class SAELib::SFF::SpriteData
 ### ダミーデータ判断
 自身がダミーデータであるかを確認します  
