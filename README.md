@@ -100,51 +100,101 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 
 ## class SAELib::SFF::SpriteData
 ### ダミーデータ判断
-自身がダミーデータであるかを確認します
-SFFConfig::SetThrowErrorの設定がOFFの場合にエラー回避のために使用されます
+自身がダミーデータであるかを確認します  
+SFFConfig::SetThrowErrorの設定がOFFの場合にエラー回避のために使用されます  
 ```
 sff.GetSpriteData(XXX).IsDummy(); // ダミーデータ判断
 ```
 戻り値 bool (false = 自身が正常なデータ：true = 自身がダミーデータ))  
 
 ### ダミーデータ配列
-ピクセルデータ配列／パレットデータ配列のダミーデータです
-自身がダミーデータの場合にバイナリデータのダミーとして使用されます
+ピクセルデータ配列／パレットデータ配列のダミーデータです  
+自身がダミーデータの場合にバイナリデータのダミーとして使用されます  
 ```
 constexpr const unsigned char* DummyBinaryData[1] = {}; // バイナリデータのダミー
 ```
 
 ### 軸座標Xの取得
-SAEで設定した軸座標Xを返します
-ダミーデータの場合は 0 を返します
+SAEで設定した軸座標Xを返します  
+ダミーデータの場合は 0 を返します  
 ```
 sff.GetSpriteData(XXX).AxisX(); // 軸座標Xを取得
 ```
 戻り値 int32_t 軸座標X  
 
 ### 軸座標Yの取得
-SAEで設定した軸座標Yを返します
-ダミーデータの場合は 0 を返します
+SAEで設定した軸座標Yを返します  
+ダミーデータの場合は 0 を返します  
 ```
 sff.GetSpriteData(XXX).AxisY(); // 軸座標Yを取得
 ```
 戻り値 int32_t 軸座標Y  
 
 ### グループ番号の取得
-SAEで設定したグループ番号を返します
-ダミーデータの場合は 0 を返します
+SAEで設定したグループ番号を返します  
+ダミーデータの場合は 0 を返します  
 ```
 sff.GetSpriteData(XXX).GroupNo(); // グループ番号を取得
 ```
 戻り値 int32_t グループ番号  
 
-### グループ番号の取得
-SAEで設定したグループ番号を返します
-ダミーデータの場合は 0 を返します
+### イメージ番号の取得
+SAEで設定したイメージ番号を返します  
+ダミーデータの場合は 0 を返します  
 ```
-sff.GetSpriteData(XXX).GroupNo(); // グループ番号を取得
+sff.GetSpriteData(XXX).ImageNo(); // イメージ番号を取得
 ```
-戻り値 int32_t グループ番号  
+戻り値 int32_t イメージ番号  
+
+### ピクセルデータの取得
+画像のピクセルデータ配列を返します  
+ダミーデータの場合は DummyBinaryData を返します  
+```
+sff.GetSpriteData(XXX).PixelBinaryData(); // イメージ番号を取得
+```
+戻り値1 const unsigned char* const PixelBinaryData ピクセルデータ配列  
+戻り値2 const unsigned char* const DummyBinaryData ダミーデータ配列  
+
+### ピクセルデータサイズの取得
+ピクセルデータのバイトサイズを返します  
+ダミーデータの場合は 0 を返します  
+```
+sff.GetSpriteData(XXX).PixelBinaryDataByteSize(); // ピクセルデータバイトサイズを取得
+```
+戻り値 size_t ピクセルデータバイトサイズ 
+
+### パレットデータの取得
+画像のパレットデータ配列を返します  
+ダミーデータの場合は DummyBinaryData を返します  
+```
+sff.GetSpriteData(XXX).PaletteBinaryData(); // イメージ番号を取得
+```
+戻り値1 const unsigned char* const PaletteBinaryData ピクセルデータ配列  
+戻り値2 const unsigned char* const DummyBinaryData ダミーデータ配列  
+
+### BMPデータの取得
+画像をBMP形式に変換したデータを返します  
+ダミーデータの場合は 0 を返します  
+```
+sff.GetSpriteData(XXX).BuildBMPBinaryData(); // BMPデータを取得
+```
+戻り値 std::vector<unsigned char> BMPデータ 
+
+### 画像の幅を取得
+ピクセルデータに記録されている画像の幅を返します  
+ダミーデータの場合は 0 を返します  
+```
+sff.GetSpriteData(XXX).PixelWidth(); // 画像の幅を取得
+```
+戻り値 uint16_t 画像の幅  
+
+### 画像の高さを取得
+ピクセルデータに記録されている画像の高さを返します  
+ダミーデータの場合は 0 を返します  
+```
+sff.GetSpriteData(XXX).PixelHeight(); // 画像の高さを取得
+```
+戻り値 uint16_t 画像の高さ  
 
 ## class SAELib::SFFConfig
 ### エラー出力切り替え設定/取得
