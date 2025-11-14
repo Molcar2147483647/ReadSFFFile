@@ -178,7 +178,7 @@ sff.GetSpriteData(XXX).PaletteBinaryData(); // イメージ番号を取得
 ```
 sff.GetSpriteData(XXX).BuildBMPBinaryData(); // BMPデータを取得
 ```
-戻り値 std::vector<unsigned char> BMPデータ 
+戻り値 std::vector\<unsigned char> BMPデータ 
 
 ### 画像の幅を取得
 ピクセルデータに記録されている画像の幅を返します  
