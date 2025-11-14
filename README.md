@@ -114,6 +114,38 @@ sff.GetSpriteData(XXX).IsDummy(); // ダミーデータ判断
 constexpr const unsigned char* DummyBinaryData[1] = {}; // バイナリデータのダミー
 ```
 
+### 軸座標Xの取得
+SAEで設定した軸座標Xを返します
+ダミーデータの場合は 0 を返します
+```
+sff.GetSpriteData(XXX).AxisX(); // 軸座標Xを取得
+```
+戻り値 int32_t 軸座標X  
+
+### 軸座標Yの取得
+SAEで設定した軸座標Yを返します
+ダミーデータの場合は 0 を返します
+```
+sff.GetSpriteData(XXX).AxisY(); // 軸座標Yを取得
+```
+戻り値 int32_t 軸座標Y  
+
+### グループ番号の取得
+SAEで設定したグループ番号を返します
+ダミーデータの場合は 0 を返します
+```
+sff.GetSpriteData(XXX).GroupNo(); // グループ番号を取得
+```
+戻り値 int32_t グループ番号  
+
+### グループ番号の取得
+SAEで設定したグループ番号を返します
+ダミーデータの場合は 0 を返します
+```
+sff.GetSpriteData(XXX).GroupNo(); // グループ番号を取得
+```
+戻り値 int32_t グループ番号  
+
 ## class SAELib::SFFConfig
 ### エラー出力切り替え設定/取得
 このライブラリ関数で発生したエラーを例外として投げるかログとして記録するかを指定できます  
