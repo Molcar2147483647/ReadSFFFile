@@ -101,11 +101,18 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 ## class SAELib::SFF::SpriteData
 ### ダミーデータ判断
 自身がダミーデータであるかを確認します
-SFFConfig::SetThrowErrorの設定がOFFの場合にエラー回避のために利用されます
+SFFConfig::SetThrowErrorの設定がOFFの場合にエラー回避のために使用されます
 ```
+sff.GetSpriteData(XXX).IsDummy(); // ダミーデータ判断
+```
+戻り値 bool (false = 自身が正常なデータ：true = 自身がダミーデータ))  
 
+### ダミーデータ配列
+ピクセルデータ配列／パレットデータ配列のダミーデータです
+自身がダミーデータの場合にバイナリデータのダミーとして使用されます
 ```
-戻り値 bool(false = 自身が正常なデータ：true = 自身がダミーデータ))  
+constexpr const unsigned char* DummyBinaryData[1] = {}; // バイナリデータのダミー
+```
 
 ## class SAELib::SFFConfig
 ### エラー出力切り替え設定/取得
