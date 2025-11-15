@@ -75,7 +75,7 @@ SFFデータへ指定したインデックスでアクセスします
 ```
 sff.GetSpriteData(0).AxisX(); // 0番目データのX軸を取得
 ```
-引数1 int32_t Index インデックス
+引数1 int32_t Index インデックス  
 戻り値1 対象が存在する GetSpriteData(Index)の参照  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
