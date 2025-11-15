@@ -95,7 +95,7 @@ sff.ExportToBMP(9000, 0); // 画像番号9000-0の画像をBMP出力
 ```
 sff.ExportToBMP(true); // 取得画像をBMP出力
 ```
-引数1 bool 重複した画像を出力するか(false = 含まない：true = 含む)  
+引数1 bool 重複した画像を出力するか (false = 含まない：true = 含む)  
 戻り値 bool 出力結果 (true = 成功：false = 失敗)  
 
 ### SFFデータの初期化
