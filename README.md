@@ -281,8 +281,98 @@ SAELib::SFFConfig::GetSFFSearchPath(); // SFFファイルの検索パス取得
 戻り値 const std::string& SFFファイルの検索先のパス  
 
 ## namespace SAELib::SFFError
+### エラーID情報  
+このライブラリが出力するエラーIDのenumです  
+```
+enum ErrorID : int32_t {
+	InvalidSFFExtension,
+	LoadSFFInvalidPath,
+	SFFSearchInvalidPath,
+	SFFFileNotFound,
+	SffFileSizeOver,
+	EmptySffFilePath,
+	OpenSffFileFailed,
+	InvalidSFFSignature,
+	UnsupportedSFFv2Version,
+	UnsupportedSFFv2_1Version,
+	BrokenSFFFile,
+	DuplicateSpriteNumber,
+	SpriteNumberNotFound,
+	SpriteIndexNotFound,
+	SAELibFolderInvalidPath,
+	CreateSAELibFolderFailed,
+	CreateErrorLogFileFailed,
+	WriteErrorLogFileFailed,
+	CloseErrorLogFileFailed,
+	CreateExportBMPFolderFailed,
+	CreateBMPFileFailed,
+	WriteBMPFileFailed,
+	CloseBMPFileFailed,
+	CheckBuildBMPBinaryData,
+};
+```
 
+### エラー情報配列
+このライブラリが出力するエラー情報の配列です  
+```
+struct T_ErrorInfo {
+public:
+  const int32_t ID;
+  const char* const Name;
+  const char* const Message;
+};
+      
+constexpr T_ErrorInfo ErrorInfo[] = {
+	{ InvalidSFFExtension,			"InvalidSFFExtension",			"ファイルの拡張子が.sffではありません" },
+	{ LoadSFFInvalidPath,			"LoadSFFInvalidPath",			"SFFファイル読み込み関数のパスが正しくありません" },
+	{ SFFSearchInvalidPath,			"SFFSearchInvalidPath",			"SFFファイル検索フォルダのパスが正しくありません" },
+	{ SFFFileNotFound,				"SFFFileNotFound",				"SFFファイルが見つかりません" },
+	{ SffFileSizeOver,				"SffFileSizeOver",				"SFFファイルサイズが許容値を超えています" },
+	{ EmptySffFilePath,				"EmptySffFilePath",				"SFFファイルパスが指定されていません" },
+	{ OpenSffFileFailed,			"OpenSffFileFailed",			"SFFファイルが開けませんでした" },
+	{ InvalidSFFSignature,			"InvalidSFFSignature",			"ファイルの内部形式がSFFファイルではありません" },
+	{ UnsupportedSFFv2Version,		"UnsupportedSFFv2Version",		"SFFv2形式のファイルは対応していません" },
+	{ UnsupportedSFFv2_1Version,	"UnsupportedSFFv2.1Version",	"SFFv2.1形式のファイルは対応していません" },
+	{ BrokenSFFFile,				"BrokenSFFFile",				"SFFファイルが壊れている可能性があります" },
+	{ DuplicateSpriteNumber,		"DuplicateSpriteNumber",		"スプライトリストの番号が重複しています" },
+	{ SpriteNumberNotFound,			"SpriteNumberNotFound",			"指定した番号がスプライトリストから見つかりません" },
+	{ SpriteIndexNotFound,			"SpriteIndexNotFound",			"指定したインデックスがスプライトリストから見つかりません" },
+	{ SAELibFolderInvalidPath,		"SAELibFolderInvalidPath",		"SAELibフォルダのパスが正しくありません" },
+	{ CreateSAELibFolderFailed,		"CreateSAELibFolderFailed",		"SAELibフォルダの作成に失敗しました" },
+	{ CreateErrorLogFileFailed,		"CreateErrorLogFileFailed",		"エラーログファイルの作成に失敗しました" },
+	{ WriteErrorLogFileFailed,		"WriteErrorLogFileFailed",		"エラーログファイルへの書き込みに失敗しました" },
+	{ CloseErrorLogFileFailed,		"CloseErrorLogFileFailed",		"エラーログファイルへの書き込みが正常に終了しませんでした" },
+	{ CreateExportBMPFolderFailed,	"CreateExportBMPFolderFailed",	"BMPファイル出力フォルダの作成に失敗しました" },
+	{ CreateBMPFileFailed,			"CreateBMPFileFailed",			"BMPファイルの作成に失敗しました" },
+	{ WriteBMPFileFailed,			"WriteBMPFileFailed",			"BMPファイルの書き込みに失敗しました" },
+	{ CloseBMPFileFailed,			"CloseBMPFileFailed",			"BMPファイルの書き込みが正常に終了しませんでした" },
+	{ CheckBuildBMPBinaryData,		"CheckBuildBMPBinaryData",		"BMPデータ構築中に想定外の値を確認しました" },
+};
 
+```
+
+### エラー情報のサイズ取得
+エラー情報の配列サイズを取得します　　
+```
+ErrorInfoSize; // エラー情報配列サイズ
+```
+戻り値 size_t ErrorInfoSize エラー情報配列サイズ
+
+### エラー名取得
+エラーIDに応じたエラー名を取得します  
+```
+Name(ErrorID); // ErrorIDのエラー名を取得
+```
+引数1 int32_t ErrorID エラーID  
+戻り値 const char* ErrorName エラー名  
+
+### エラーメッセージ取得
+エラーIDに応じたエラーメッセージを取得します  
+```
+Message(ErrorID); // ErrorIDのエラーメッセージを取得
+```
+引数1 int32_t ErrorID エラーID  
+戻り値 const char* ErrorMessage エラーメッセージ  
 
 ## 使用例
 ```
