@@ -45,8 +45,8 @@ SAELib::SFF sff;
 sff.LoadSFF("kfm.sff");                 // 実行ファイルの階層から検索
 sff.LoadSFF("kfm.sff", "C:/MugenData"); // 指定パスから検索
 ```
-引数1 const std::string& ファイル名(拡張子 .sff は省略可)  
-引数2 const std::string& 対象のパス(省略時は実行ファイルの子階層を探索)  
+引数1 const std::string& FileName ファイル名(拡張子 .sff は省略可)  
+引数2 const std::string& FilePath 対象のパス(省略時は実行ファイルの子階層を探索)  
 戻り値 bool 読み込み結果 (false = 失敗：true = 成功)
 
 ### 指定番号の存在確認
@@ -54,8 +54,8 @@ sff.LoadSFF("kfm.sff", "C:/MugenData"); // 指定パスから検索
 ```
 sff.ExistSpriteNumber(9000, 0); // 画像番号9000-0が存在するか確認
 ```
-引数1 int32_t グループ番号  
-引数2 int32_t イメージ番号  
+引数1 int32_t GroupNo グループ番号  
+引数2 int32_t ImageNo イメージ番号  
 戻り値 bool 検索結果 (false = 存在なし : true = 存在あり)
 
 ### 指定番号のデータへのアクセス
@@ -64,8 +64,8 @@ sff.ExistSpriteNumber(9000, 0); // 画像番号9000-0が存在するか確認
 ```
 sff.GetSpriteData(9000, 0).AxisX(); // 画像番号9000-0のX軸を取得
 ```
-引数1 int32_t グループ番号  
-引数2 int32_t イメージ番号  
+引数1 int32_t GroupNo グループ番号  
+引数2 int32_t ImageNo イメージ番号  
 戻り値1 対象が存在する GetSpriteData(GroupNo, ImageNo)の参照  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
@@ -75,7 +75,7 @@ SFFデータへ指定したインデックスでアクセスします
 ```
 sff.GetSpriteData(0).AxisX(); // 0番目データのX軸を取得
 ```
-引数1 int32_t インデックス
+引数1 int32_t Index インデックス
 戻り値1 対象が存在する GetSpriteData(Index)の参照  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
@@ -85,8 +85,8 @@ sff.GetSpriteData(0).AxisX(); // 0番目データのX軸を取得
 ```
 sff.ExportToBMP(9000, 0); // 画像番号9000-0の画像をBMP出力
 ```
-引数1 int32_t グループ番号  
-引数2 int32_t イメージ番号  
+引数1 int32_t GroupNo グループ番号  
+引数2 int32_t ImageNo イメージ番号  
 戻り値 bool 出力結果 (true = 成功：false = 失敗)  
 
 ### 全ての格納画像をBMP出力
@@ -110,14 +110,14 @@ sff.clear(); // SFFデータの初期化
 ```
 sff.empty(); // SFFデータの存在確認
 ```
-戻り値 bool (false = データが空：true = データが存在)  
+戻り値 bool 判定結果 (false = データが空：true = データが存在)  
 
 ### SFFデータのデータサイズを取得
 読み込んだSFFデータのデータサイズを返します  
 ```
 sff.size(); // SFFデータサイズを取得
 ```
-戻り値 size_t SFFデータサイズ  
+戻り値 size_t SFFDataSize SFFデータサイズ  
 
 ## class SAELib::SFF::SpriteData
 ### ダミーデータ判断
@@ -126,7 +126,7 @@ SFFConfig::SetThrowErrorの設定がOFFの場合にエラー回避のために�
 ```
 sff.GetSpriteData(XXX).IsDummy(); // ダミーデータ判断
 ```
-戻り値 bool (false = 自身が正常なデータ：true = 自身がダミーデータ))  
+戻り値 bool 判定結果 (false = 自身が正常なデータ：true = 自身がダミーデータ))  
 
 ### ダミーデータ配列
 ピクセルデータ配列／パレットデータ配列のダミーデータです  
@@ -141,7 +141,7 @@ SAEで設定した軸座標Xを返します
 ```
 sff.GetSpriteData(XXX).AxisX(); // 軸座標Xを取得
 ```
-戻り値 int32_t 軸座標X  
+戻り値 int32_t AxisX 軸座標X  
 
 ### 軸座標Yの取得
 SAEで設定した軸座標Yを返します  
@@ -149,7 +149,7 @@ SAEで設定した軸座標Yを返します
 ```
 sff.GetSpriteData(XXX).AxisY(); // 軸座標Yを取得
 ```
-戻り値 int32_t 軸座標Y  
+戻り値 int32_t AxisY 軸座標Y  
 
 ### グループ番号の取得
 SAEで設定したグループ番号を返します  
@@ -157,7 +157,7 @@ SAEで設定したグループ番号を返します
 ```
 sff.GetSpriteData(XXX).GroupNo(); // グループ番号を取得
 ```
-戻り値 int32_t グループ番号  
+戻り値 int32_t GroupNo グループ番号  
 
 ### イメージ番号の取得
 SAEで設定したイメージ番号を返します  
@@ -165,7 +165,7 @@ SAEで設定したイメージ番号を返します
 ```
 sff.GetSpriteData(XXX).ImageNo(); // イメージ番号を取得
 ```
-戻り値 int32_t イメージ番号  
+戻り値 int32_t ImageNo イメージ番号  
 
 ### ピクセルデータの取得
 画像のピクセルデータ配列を返します  
@@ -182,7 +182,7 @@ sff.GetSpriteData(XXX).PixelBinaryData(); // イメージ番号を取得
 ```
 sff.GetSpriteData(XXX).PixelBinaryDataByteSize(); // ピクセルデータバイトサイズを取得
 ```
-戻り値 size_t ピクセルデータバイトサイズ 
+戻り値 size_t PixelBinaryDataByteSize ピクセルデータバイトサイズ 
 
 ### パレットデータの取得
 画像のパレットデータ配列を返します  
@@ -199,7 +199,7 @@ sff.GetSpriteData(XXX).PaletteBinaryData(); // イメージ番号を取得
 ```
 sff.GetSpriteData(XXX).BuildBMPBinaryData(); // BMPデータを取得
 ```
-戻り値 std::vector\<unsigned char> BMPデータ 
+戻り値 std::vector\<unsigned char> BuildBMPBinaryData BMPデータ 
 
 ### 画像の幅を取得
 ピクセルデータに記録されている画像の幅を返します  
@@ -207,7 +207,7 @@ sff.GetSpriteData(XXX).BuildBMPBinaryData(); // BMPデータを取得
 ```
 sff.GetSpriteData(XXX).PixelWidth(); // 画像の幅を取得
 ```
-戻り値 uint16_t 画像の幅  
+戻り値 uint16_t PixelWidth 画像の幅  
 
 ### 画像の高さを取得
 ピクセルデータに記録されている画像の高さを返します  
@@ -215,7 +215,7 @@ sff.GetSpriteData(XXX).PixelWidth(); // 画像の幅を取得
 ```
 sff.GetSpriteData(XXX).PixelHeight(); // 画像の高さを取得
 ```
-戻り値 uint16_t 画像の高さ  
+戻り値 uint16_t PixelHeight 画像の高さ  
 
 ## class SAELib::SFFConfig
 ### エラー出力切り替え設定/取得
@@ -253,19 +253,19 @@ SAELib::SFFConfig::SetCreateSAELibFile(bool flag, const std::string& Path = "");
 ```
 SAELib::SFFConfig::GetCreateSAELibFile(); // SAELibフォルダを作成設定を取得  
 ```
-戻り値 const std::string& SAELibフォルダ作成先  
+戻り値 const std::string& CreateSAELibFile SAELibフォルダ作成先  
 
 ### SAELibフォルダのパス設定/取得
 SAELibファイルの作成パスを指定できます  
 ```
 SAELib::SFFConfig::SetSAELibFilePath(const std::string& Path = ""); // SAELibフォルダのパス設定
 ```
-引数1 const std::string& SAELibフォルダ作成先  
+引数1 const std::string& SAELibFilePath SAELibフォルダ作成先  
 戻り値 なし(void)  
 ```
 SAELib::SFFConfig::GetSAELibFilePath(); // SAELibフォルダを作成パス取得  
 ```
-戻り値 const std::string& SAELibフォルダ作成先  
+戻り値 const std::string& SAELibFilePath SAELibフォルダ作成先  
 
 ### SFFファイルの検索パス設定/取得
 SFFファイルの検索先のパスを指定できます  
@@ -273,12 +273,12 @@ SFFコンストラクタもしくはLoadSFF関数で検索先のパスを指定�
 ```
 SAELib::SFFConfig::SetSFFSearchPath(const std::string& Path = ""); // SFFファイルの検索パス設定  
 ```
-引数1 const std::string& SFFファイルの検索先のパス  
+引数1 const std::string& SFFSearchPath SFFファイルの検索先のパス  
 戻り値 なし(void)  
 ```
 SAELib::SFFConfig::GetSFFSearchPath(); // SFFファイルの検索パス取得  
 ```
-戻り値 const std::string& SFFファイルの検索先のパス  
+戻り値 const std::string& SFFSearchPath SFFファイルの検索先のパス  
 
 ## namespace SAELib::SFFError
 ### エラーID情報  
