@@ -373,13 +373,31 @@ SAELib::SFFError::ErrorMessage(ErrorID); // ErrorIDのエラーメッセージ�
 
 ## 使用例
 ```
-// 定義時にファイルを読み込む  
-ReadSffFile::SFF Test("kfm.sff");  
+#include "h_ReadSFFFile.h"
 
-// スプライトリスト9000-1番の座標を取得  
-Test.DataList(9000, 1).AxisX();  
-Test.DataList(9000, 1).AxisY();  
+int main()
+{
+	SAELib::SFFConfig::SetThrowError(false);		// このライブラリで発生したエラーを例外として処理しない
+	SAELib::SFFConfig::SetCreateSAELibFile(true);	// SAELibファイルの作成を許可する
+	SAELib::SFFConfig::SetSAELibFilePath();			// SAELibファイルの作成階層を指定
+	SAELib::SFFConfig::SetCreateLogFile(true);		// このライブラリで発生したエラーログの作成を許可する
+	SAELib::SFFConfig::SetSFFSearchPath("../../");	// SFFファイルの検索開始階層を指定
 
-// 既存のデータを上書きして別のファイルを読み込む  
-Test.LoadSFF("kfm720.sff");
+	// kfmのsffファイルを読み込む
+	SAELib::SFF sff("kfm");
+
+	// 画像番号9000-0が存在するか確認
+	if (sff.ExistSpriteNumber(9000, 0)) {
+		// 画像番号9000-0のXY軸を取得
+		sff.GetSpriteData(9000, 0).AxisX();
+		sff.GetSpriteData(9000, 0).AxisY();
+	}
+	// 画像番号9000-0の画像をBMP出力
+	sff.ExportToBMP(9000, 0);
+
+	// 取得画像をBMP出力(true = 重複あり)
+	sff.ExportToBMP(true);
+
+	return 0;
+}
 ```
