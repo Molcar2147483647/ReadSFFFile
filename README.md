@@ -280,8 +280,7 @@ SAELib::SFFConfig::GetSFFSearchPath(); // SFFファイルの検索パス取得
 ```
 戻り値 const std::string& SFFファイルの検索先のパス  
 
-## エラー情報一覧
-
+## namespace SAELib::SFFError
 
 
 
