@@ -354,14 +354,14 @@ constexpr T_ErrorInfo ErrorInfo[] = {
 ### エラー情報のサイズ取得
 エラー情報の配列サイズを取得します　　
 ```
-ErrorInfoSize; // エラー情報配列サイズ
+SAELib::SFFError::ErrorInfoSize; // エラー情報配列サイズ
 ```
 戻り値 size_t ErrorInfoSize エラー情報配列サイズ
 
 ### エラー名取得
 エラーIDに応じたエラー名を取得します  
 ```
-Name(ErrorID); // ErrorIDのエラー名を取得
+SAELib::SFFError::ErrorName(ErrorID); // ErrorIDのエラー名を取得
 ```
 引数1 int32_t ErrorID エラーID  
 戻り値 const char* ErrorName エラー名  
@@ -369,7 +369,7 @@ Name(ErrorID); // ErrorIDのエラー名を取得
 ### エラーメッセージ取得
 エラーIDに応じたエラーメッセージを取得します  
 ```
-Message(ErrorID); // ErrorIDのエラーメッセージを取得
+SAELib::SFFError::ErrorMessage(ErrorID); // ErrorIDのエラーメッセージを取得
 ```
 引数1 int32_t ErrorID エラーID  
 戻り値 const char* ErrorMessage エラーメッセージ  
