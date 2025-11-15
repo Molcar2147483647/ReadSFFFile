@@ -16,7 +16,7 @@ C++言語標準：ISO C++17標準
 インスタンスを生成して使用する  
 
 ### class SAELib::SFF::SpriteData
-格納されたデータのパラメータを取得する際に使用する  
+格納されたデータのパラメータを取得する際に使用するクラス  
 
 ### class SAELib::SFFConfig
 ReadSffFileライブラリの動作設定が可能  
