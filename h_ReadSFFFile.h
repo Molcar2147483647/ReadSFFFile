@@ -1321,8 +1321,31 @@ namespace SAELib {
 			};
 
 		public:
+			/**
+			* @brief SFFデータの画像グループ数を取得
+			*
+			* 　読み込んだSFFデータの画像グループ数を返します
+			*
+			* @return int32_t NumGroup 画像グループ数
+			*/
 			int32_t NumGroup() const noexcept { return NumGroup_; }
+		
+			/**
+			* @brief SFFデータの画像イメージ数を取得
+			*
+			* 　読み込んだSFFデータの画像イメージ数を返します
+			*
+			* @return int32_t NumImage 画像イメージ数
+			*/
 			int32_t NumImage() const noexcept { return NumImage_; }
+			
+			/**
+			* @brief SFFデータのファイル名を取得
+			*
+			* 　読み込んだSFFデータの拡張子を除いたファイル名を返します
+			*
+			* @return const std::string& FileName ファイル名
+			*/
 			const std::string& FileName() const noexcept { return FileName_; }
 
 			/**
@@ -1346,7 +1369,7 @@ namespace SAELib {
 			*
 			* 　読み込んだSFFデータの空かを判定します  
 			*
-			* @return bool (false = データが空：true = データが存在)
+			* @return bool 判定結果 (false = データが空：true = データが存在)
 			*/
 			bool empty() const noexcept {
 				return FileName().empty() && SFFBinaryData.empty() && SpriteNumberUMap.empty() && SpriteDataUMap.empty();
@@ -1357,7 +1380,7 @@ namespace SAELib {
 			*
 			* 　読み込んだSFFデータのデータサイズを返します
 			*
-			* @return size_t SFFデータサイズ
+			* @return size_t SFFDataSize SFFデータサイズ
 			*/
 			size_t size() const noexcept {
 				return SFFBinaryData.size();
