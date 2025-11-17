@@ -1331,11 +1331,11 @@ namespace SAELib {
 			int32_t NumGroup() const noexcept { return NumGroup_; }
 		
 			/**
-			* @brief SFFデータの画像イメージ数を取得
+			* @brief SFFデータの画像数を取得
 			*
-			* 　読み込んだSFFデータの画像イメージ数を返します
+			* 　読み込んだSFFデータの画像数を返します
 			*
-			* @return int32_t NumImage 画像イメージ数
+			* @return int32_t NumImage 画像数
 			*/
 			int32_t NumImage() const noexcept { return NumImage_; }
 			
