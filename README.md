@@ -95,6 +95,27 @@ sff.ExportToBMP(true); // 取得画像をBMP出力
 引数1 bool 重複した画像を出力するか (false = 含まない：true = 含む)  
 戻り値 bool 出力結果 (true = 成功：false = 失敗)  
 
+### SFFデータの画像グループ数を取得
+読み込んだSFFデータの画像グループ数を返します  
+```
+sff.NumGroup(); // 画像グループ数を取得
+```
+戻り値 int32_t NumGroup 画像グループ数  
+
+### SFFデータの画像数を取得
+読み込んだSFFデータの画像数を返します  
+```
+sff.NumImage(); // 画像数を取得
+```
+戻り値 int32_t NumImage 画像数  
+
+### SFFデータのファイル名を取得
+読み込んだSFFデータの拡張子を除いたファイル名を返します  
+```
+sff.FileName(); // ファイル名を取得
+```
+戻り値 const std::string& FileName ファイル名  
+
 ### SFFデータの初期化
 読み込んだSFFデータを初期化します  
 ```
