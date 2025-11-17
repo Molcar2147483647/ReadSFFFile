@@ -18,7 +18,7 @@ namespace SAELib {
 		namespace ReadSffFileFormat {
 			inline constexpr double kVersion = 1.00;
 			inline constexpr std::string_view kSystemDirectoryName = "SAELib";
-			inline constexpr std::string_view kErrorLogFileName = "SAELib_ErrorLog";
+			inline constexpr std::string_view kErrorLogFileName = "SAELib_SFFErrorLog";
 		};
 
 		namespace SFFFormat {
