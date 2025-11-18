@@ -653,11 +653,11 @@ namespace SAELib {
 				const int32_t kSpriteAxis;		// axisXY(-32768Å`32767) axisX(65535) axisY(65535)
 				const int32_t kSpriteNumber;	// groupNo(65535) imageNo(65535)
 			public:
-				ksize_t IndexListNumber() const noexcept { return kIndexListNumber; }
-				int32_t AxisX() const noexcept { return Convert::DecodeSpriteAxisX(kSpriteAxis); }
-				int32_t AxisY() const noexcept { return Convert::DecodeSpriteAxisY(kSpriteAxis); }
-				int32_t GroupNo() const noexcept { return Convert::DecodeSpriteGroupNo(kSpriteNumber); }
-				int32_t ImageNo() const noexcept { return Convert::DecodeSpriteImageNo(kSpriteNumber); }
+				[[nodiscard]] ksize_t IndexListNumber() const noexcept { return kIndexListNumber; }
+				[[nodiscard]] int32_t AxisX() const noexcept { return Convert::DecodeSpriteAxisX(kSpriteAxis); }
+				[[nodiscard]] int32_t AxisY() const noexcept { return Convert::DecodeSpriteAxisY(kSpriteAxis); }
+				[[nodiscard]] int32_t GroupNo() const noexcept { return Convert::DecodeSpriteGroupNo(kSpriteNumber); }
+				[[nodiscard]] int32_t ImageNo() const noexcept { return Convert::DecodeSpriteImageNo(kSpriteNumber); }
 
 				T_DataList(ksize_t IndexListNumber, int32_t AxisX, int32_t AxisY, int32_t GroupNo, int32_t ImageNo) noexcept
 					: kIndexListNumber(IndexListNumber)
@@ -1293,7 +1293,7 @@ namespace SAELib {
 				*
 				* @return std::vector<unsigned char> BuildBMPBinaryData BMPÉfÅ[É^
 				*/
-				std::vector<unsigned char> BuildBMPBinaryData() const { return T_BuildBMPBinary(PixelBinaryData(), PaletteBinaryData(), PixelBinaryDataByteSize()).vecdata(); }
+				std::vector<unsigned char> BuildBMPBinaryData() const { return T_BuildBMPBinary(PixelBinaryData(), PaletteBinaryData(), static_cast<ksize_t>(PixelBinaryDataByteSize())).vecdata(); }
 				
 				/**
 				* @brief âÊëúÇÃïùÇéÊìæ
