@@ -1466,7 +1466,7 @@ namespace SAELib {
 				if (!T_Config::Instance().ThrowError()) {
 					return SpriteData(&SFFBinaryData, KSIZE_MAX);
 				}
-				T_ErrorHandle::Instance().ThrowError(ErrorMessage::SpriteNumberNotFound, index);
+				T_ErrorHandle::Instance().ThrowError(ErrorMessage::SpriteIndexNotFound, index);
 			}
 
 			/**
