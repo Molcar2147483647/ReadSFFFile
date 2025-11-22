@@ -59,11 +59,11 @@ sff.ExistSpriteNumber(9000, 0); // 画像番号9000-0が存在するか確認
 指定したグループ番号とイメージ番号のSFFデータへアクセスします  
 対象が存在しない場合はSFFConfig::SetThrowErrorの設定に準拠します  
 ```
-sff.GetSpriteData(9000, 0).AxisX(); // 画像番号9000-0のX軸を取得
+sff.GetSpriteData(9000, 0); // 画像番号9000-0のデータを取得
 ```
 引数1 int32_t GroupNo グループ番号  
 引数2 int32_t ImageNo イメージ番号  
-戻り値1 対象が存在する GetSpriteData(GroupNo, ImageNo)の参照  
+戻り値1 対象が存在する GetSpriteData(GroupNo, ImageNo)のデータ  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
 ### 指定インデックスのデータへアクセス
