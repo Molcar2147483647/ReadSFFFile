@@ -70,7 +70,7 @@ sff.GetSpriteData(9000, 0); // 画像番号9000-0のデータを取得
 SFFデータへ指定したインデックスでアクセスします  
 対象が存在しない場合はSFFConfig::SetThrowErrorの設定に準拠します  
 ```
-sff.GetSpriteData(0).AxisX(); // 0番目データのX軸を取得
+sff.GetSpriteData(0); // 0番目の画像データを取得
 ```
 引数1 int32_t Index インデックス  
 戻り値1 対象が存在する GetSpriteData(Index)の参照  
