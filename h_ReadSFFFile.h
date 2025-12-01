@@ -968,7 +968,6 @@ namespace SAELib {
 				}
 
 				SpriteNumberUMap.Register(GroupNo(), ImageNo());
-				ksize_t SpriteBinaryIndex = 0;
 				ksize_t SpriteListIndex = 0;
 				ksize_t PaletteListIndex = 0;
 				ksize_t IndexListNumber = 0;
@@ -1020,7 +1019,6 @@ namespace SAELib {
 					for (SpriteListIndex = 0; SpriteListIndex < SFFBinaryData.NumSprite(); ++SpriteListIndex) {
 						// 既存の画像データの場合はインデックスを指定
 						if (SFFBinaryData.SpriteSize(SpriteListIndex) == LoadSpriteData.size() && !std::memcmp(SFFBinaryData.Sprite(SpriteListIndex), LoadSpriteData.data(), LoadSpriteData.size())) {
-							SpriteBinaryIndex = SFFBinaryData.SpriteList(SpriteListIndex).SpriteStart();
 							FoundSpriteData = true;
 							break;
 						}
@@ -1028,7 +1026,6 @@ namespace SAELib {
 					}
 					// 新規画像の場合は画像データを格納
 					if (!FoundSpriteData) {
-						SpriteBinaryIndex = static_cast<ksize_t>(SFFBinaryData.Sprite().size());
 						SFFBinaryData.AddSprite(LoadSpriteData);
 					}
 
