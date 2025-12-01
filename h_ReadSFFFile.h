@@ -566,15 +566,15 @@ namespace SAELib {
 		// スプライトリストの画像番号の重複チェック＆存在確認
 		struct T_UnorderedMap {
 		private:
-			std::unordered_map<int, int> UnorderedMap = {};
+			std::unordered_map<int32_t, int32_t> UnorderedMap = {};
 
 		public:
 			void Register(int32_t value) {
-				UnorderedMap[value] = static_cast<int>(UnorderedMap.size());
+				UnorderedMap[value] = static_cast<int32_t>(UnorderedMap.size());
 			}
 
 			void Register(int32_t value1, int32_t value2) {
-				UnorderedMap[Convert::EncodeIntHalf(value1, value2)] = static_cast<int>(UnorderedMap.size());
+				UnorderedMap[Convert::EncodeIntHalf(value1, value2)] = static_cast<int32_t>(UnorderedMap.size());
 			}
 
 		public:
