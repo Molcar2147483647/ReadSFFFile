@@ -66,11 +66,19 @@ sff.GetSpriteData(9000, 0); // 画像番号9000-0のデータを取得
 戻り値1 対象が存在する GetSpriteData(GroupNo, ImageNo)のデータ  
 戻り値2 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)  
 
+### 指定インデックスデータの存在確認
+読み込んだSFFデータを検索し、指定インデックスのデータ存在するかを確認します  
+```
+air.ExistSpriteDataIndex(0); // 0番目のデータが存在するか確認
+```
+引数1 int32_t index データ配列インデックス  
+戻り値 bool 検索結果 (false = 存在なし : true = 存在あり)
+
 ### 指定インデックスのデータへアクセス
 SFFデータへ指定したインデックスでアクセスします  
 対象が存在しない場合はSFFConfig::SetThrowErrorの設定に準拠します  
 ```
-sff.GetSpriteData(0); // 0番目の画像データを取得
+sff.GetSpriteDataIndex(0); // 0番目の画像データを取得
 ```
 引数1 int32_t Index インデックス  
 戻り値1 対象が存在する GetSpriteData(Index)の参照  
