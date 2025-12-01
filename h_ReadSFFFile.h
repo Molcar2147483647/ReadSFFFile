@@ -1453,7 +1453,7 @@ namespace SAELib {
 			* @param int32_t index データ配列インデックス
 			* @return bool 検索結果 (false = 存在なし : true = 存在あり)
 			*/
-			bool ExistSpriteDataIndex(int32_t SpriteDataIndex) {
+			bool ExistSpriteDataIndex(int32_t SpriteDataIndex) const {
 				return static_cast<ksize_t>(SpriteDataIndex) < SFFBinaryData.DataList().size();
 			}
 
@@ -1468,7 +1468,7 @@ namespace SAELib {
 			* @retval 対象が存在する SpriteData
 			* @retval 対象が存在しない SFFConfig::SetThrowError (false = ダミーデータの参照：true = 例外を投げる)
 			*/
-			const SpriteData GetSpriteDataIndex(int32_t index) {
+			const SpriteData GetSpriteDataIndex(int32_t index) const {
 				if (ExistSpriteDataIndex(index)) {
 					return SpriteData(&SFFBinaryData, index);
 				}
