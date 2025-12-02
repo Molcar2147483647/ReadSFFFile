@@ -450,7 +450,7 @@ namespace SAELib {
 
 			void InitBinaryBuffers() {
 				BMPBinary.resize(BMPBinarySize());
-				DecideBinary.resize(BytesPerLine() * Ymax());
+				DecideBinary.resize(static_cast<size_t>(BytesPerLine()) * Ymax());
 			}
 
 			void SetBMPHeader() {
@@ -517,7 +517,7 @@ namespace SAELib {
 				unsigned char* PixelPtr = BMPBinary.data() + kBMPPixelOffBits;
 
 				for (int32_t y = Ymax() - 1; y >= 0; --y) {
-					std::memcpy(PixelPtr, &DecideBinary[y * BytesPerLine()], BytesPerLine());
+					std::memcpy(PixelPtr, &DecideBinary[static_cast<size_t>(y) * BytesPerLine()], BytesPerLine());
 					PixelPtr += BytesPerLine();
 
 					if (BMPScanlinePadding() > 0) {
@@ -577,6 +577,10 @@ namespace SAELib {
 				UnorderedMap[Convert::EncodeIntHalf(value1, value2)] = static_cast<int32_t>(UnorderedMap.size());
 			}
 
+			void Register(ksize_t value1, ksize_t value2) {
+				UnorderedMap[Convert::EncodeIntHalf(static_cast<int32_t>(value1), static_cast<int32_t>(value2))] = static_cast<int32_t>(UnorderedMap.size());
+			}
+
 		public:
 			T_UnorderedMap() = default;
 
@@ -588,12 +592,18 @@ namespace SAELib {
 			[[nodiscard]] int32_t find(int32_t value1, int32_t value2) {
 				return find(Convert::EncodeIntHalf(value1, value2));
 			}
+			[[nodiscard]] int32_t find(ksize_t value1, ksize_t value2) {
+				return find(Convert::EncodeIntHalf(static_cast<int32_t>(value1), static_cast<int32_t>(value2)));
+			}
 
 			[[nodiscard]] bool exist(int32_t value) {
 				return find(value) >= 0;
 			}
 			[[nodiscard]] bool exist(int32_t value1, int32_t value2) {
 				return find(value1, value2) >= 0;
+			}
+			[[nodiscard]] bool exist(ksize_t value1, ksize_t value2) {
+				return find(static_cast<int32_t>(value1), static_cast<int32_t>(value2)) >= 0;
 			}
 
 			void reserve(ksize_t value) {
@@ -979,7 +989,7 @@ namespace SAELib {
 					const bool SharedPal_ = (!LoadNo ? false : !!SharedPal()); // 先頭画像は固有パレットとして扱う
 
 					// 固有パレットなら画像データ末尾の768Byte(パレットデータ)を除外
-					LoadSpriteData.resize(PCXDataSize() - (!SharedPal_ ? SFFFormat::kSFFPaletteSize : 0));
+					LoadSpriteData.resize(static_cast<size_t>(PCXDataSize()) - (!SharedPal_ ? SFFFormat::kSFFPaletteSize : 0));
 
 					// 画像データ一時保存
 					File.read(reinterpret_cast<char*>(LoadSpriteData.data()), LoadSpriteData.size());
