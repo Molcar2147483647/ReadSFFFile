@@ -172,9 +172,9 @@ namespace SAELib {
 				LoadSFFInvalidPath,
 				SFFSearchInvalidPath,
 				SFFFileNotFound,
-				SffFileSizeOver,
-				EmptySffFilePath,
-				OpenSffFileFailed,
+				SFFFileSizeOver,
+				EmptySFFFilePath,
+				OpenSFFFileFailed,
 				InvalidSFFSignature,
 				UnsupportedSFFv2Version,
 				UnsupportedSFFv2_1Version,
@@ -206,9 +206,9 @@ namespace SAELib {
 				{ LoadSFFInvalidPath,			"LoadSFFInvalidPath",			"SFFファイル読み込み関数のパスが正しくありません" },
 				{ SFFSearchInvalidPath,			"SFFSearchInvalidPath",			"SFFファイル検索フォルダのパスが正しくありません" },
 				{ SFFFileNotFound,				"SFFFileNotFound",				"SFFファイルが見つかりません" },
-				{ SffFileSizeOver,				"SffFileSizeOver",				"SFFファイルサイズが許容値を超えています" },
-				{ EmptySffFilePath,				"EmptySffFilePath",				"SFFファイルパスが指定されていません" },
-				{ OpenSffFileFailed,			"OpenSffFileFailed",			"SFFファイルが開けませんでした" },
+				{ SFFFileSizeOver,				"SFFFileSizeOver",				"SFFファイルサイズが許容値を超えています" },
+				{ EmptySFFFilePath,				"EmptySFFFilePath",				"SFFファイルパスが指定されていません" },
+				{ OpenSFFFileFailed,			"OpenSFFFileFailed",			"SFFファイルが開けませんでした" },
 				{ InvalidSFFSignature,			"InvalidSFFSignature",			"ファイルの内部形式がSFFファイルではありません" },
 				{ UnsupportedSFFv2Version,		"UnsupportedSFFv2Version",		"SFFv2形式のファイルは対応していません" },
 				{ UnsupportedSFFv2_1Version,	"UnsupportedSFFv2.1Version",	"SFFv2.1形式のファイルは対応していません" },
@@ -828,18 +828,18 @@ namespace SAELib {
 
 			[[nodiscard]] bool CheckFileSize() const {
 				if (kFileSize <= UINT32_MAX) { return false; }
-				T_ErrorHandle::Instance().SetError(ErrorMessage::SffFileSizeOver);
+				T_ErrorHandle::Instance().SetError(ErrorMessage::SFFFileSizeOver);
 				return true;
 			}
 			[[nodiscard]] bool CheckFilePath() const {
 				if (!FilePath().empty()) { return false; }
-				T_ErrorHandle::Instance().SetError(ErrorMessage::EmptySffFilePath);
+				T_ErrorHandle::Instance().SetError(ErrorMessage::EmptySFFFilePath);
 				return true;
 			}
 			[[nodiscard]] bool CheckFileOpen() {
 				File.open(FilePath(), std::ios::binary);
 				if (File.is_open()) { return false; }
-				T_ErrorHandle::Instance().SetError(ErrorMessage::OpenSffFileFailed);
+				T_ErrorHandle::Instance().SetError(ErrorMessage::OpenSFFFileFailed);
 				return true;
 			}
 
