@@ -887,7 +887,7 @@ namespace SAELib {
 			[[nodiscard]] const std::string& FileName() const noexcept { return kFileName; }
 			[[nodiscard]] const std::string& FilePath() const noexcept { return kFilePath; }
 			[[nodiscard]] ksize_t FileSize() const noexcept { return static_cast<ksize_t>(kFileSize); }
-			[[nodiscard]] std::string_view Signature() const noexcept { return std::string_view(reinterpret_cast<const char*>(buffer), 12); }
+			[[nodiscard]] std::string_view Signature() const noexcept { return std::string_view(reinterpret_cast<const char*>(buffer), SFFFormat::kSignature.size()); }
 			[[nodiscard]] uint32_t Version() const noexcept { return DecodeBinary::UInt32BE(&buffer[12]); }
 			[[nodiscard]] uint32_t NumGroups() const noexcept { return DecodeBinary::UInt32LE(&buffer[16]); }
 			[[nodiscard]] uint32_t NumImages() const noexcept { return DecodeBinary::UInt32LE(&buffer[20]); }
